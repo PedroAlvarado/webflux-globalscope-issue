@@ -26,12 +26,7 @@ class RouterConfig {
 @Component
 class Handler {
 	suspend fun fooSomething(request: ServerRequest) : ServerResponse {
-//		GlobalScope.launch(Dispatchers.IO) {
-//			delay(3000)
-//			println(request.awaitBodyOrNull<String>())
-//		}
 		GlobalScope.processRequest(request)
-
 		println(request.awaitBodyOrNull<String>())
 		return ServerResponse.ok().buildAndAwait()
 	}
